@@ -8,11 +8,11 @@ def hexToBin(hex):
 	binary = ''
 
 	for char in hex:
-		#Converts hex to decimal for zero padding
+		# Converts hex to decimal for zero padding
 		dec = int(char, base=16)
-		#Convert dec to binary string, slicing off first two chars (0b)
+		# Convert dec to binary string, slicing off first two chars (0b)
 		b2 = str(bin(dec))[2:]
-		#Taking care of 0 padding
+		# Taking care of 0 padding
 		if dec <= 1:
 			binary = binary + '000' + b2
 		elif dec <= 3:
@@ -36,6 +36,8 @@ def hexToBase64(hex):
 
 	result = ''
 
+	# Takes chunks of 6, converts to decimal, and converts to base64 based on
+	# a lookup table
 	for i in range(0, len(binary), 6):
 		dec = int(binary[i:i+6], base=2)
 		if dec <= 25:
