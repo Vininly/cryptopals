@@ -38,6 +38,8 @@ def normalizeRef():
 
 
 if __name__ == '__main__':
-	buildRef(sys.argv[1])
+	buildRef('twocities.txt')
+	buildRef('hamlet.txt')
+	buildRef('gatsby.txt')
 	normalizeRef()
 	print ref
