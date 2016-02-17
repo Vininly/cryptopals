@@ -2,14 +2,8 @@ import sys
 
 lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-def hexToBase64(hex):
-	"""Converts an input hex string into base 64. Currently does not account
-	for an input length that is not divisible by 3
-
-	Precondition: len(hex) must be divisible by 3"""
-
-	if len(hex)%3 != 0:
-		raise Exception('input length is not a multiple of 3')
+def hexToBin(hex):
+	'''Converts an input hex string into binary, zero padding when necessary'''
 
 	binary = ''
 
@@ -27,6 +21,18 @@ def hexToBase64(hex):
 			binary = binary + '0' + b2
 		else:
 			binary = binary + b2
+
+	return binary
+
+def hexToBase64(hex):
+	'''Converts an input hex string into base 64. Currently does not account
+	for an input length that is not divisible by 3
+
+	Precondition: len(hex) must be divisible by 3'''
+
+	assert (len(hex)%3 == 0), 'Input length is not a multiple of 3'
+
+	binary = hexToBin(hex)
 
 	result = ''
 
