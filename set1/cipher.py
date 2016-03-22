@@ -1,7 +1,7 @@
 import sys
 
-ref = {}
-keylist = '0123456789abcdef'
+REF = {}
+KEYLIST = '0123456789abcdef'
 
 def buildRef(file):
 	'''Builds the referance dictionary by parsing an input plaintext file and
@@ -11,17 +11,16 @@ def buildRef(file):
 
 	It's also assumed that all letters occur at least once in the input file'''
 
-	f = open(file, 'r')
-
-	for line in f:
-		# Remove newlines and make all characters lowercase
-		string = line.strip().lower()
-		for char in string:
-			if char.isalpha():
-				if char not in ref:
-					ref[char] = 1
-				else:
-					ref[char] += 1
+	with open (file, 'r') as f:
+		for line in f:
+			# Remove newlines and make all characters lowercase
+			string = line.strip().lower()
+			for char in string:
+				if char.isalpha():
+					if char not in REF:
+						REF[char] = 1
+					else:
+						REF[char] += 1
 
 def normalizeRef():
 	'''Normalizes ref to make all entries sum to 1 in order to find relative 
@@ -29,11 +28,11 @@ def normalizeRef():
 
 	total = 0.0
 
-	for val in ref.itervalues():
+	for val in REF.itervalues():
 		total += val
 
-	for key in ref:
-		ref[key] = ref[key] / total
+	for key in REF:
+		REF[key] = REF[key] / total
 
 
 
