@@ -1,6 +1,6 @@
 import sys
 
-lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+LOOKUP = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 def hexToBin(hex):
 	'''Converts an input hex string into binary, zero padding when necessary'''
@@ -37,13 +37,13 @@ def hexToBase64(hex):
 	result = ''
 
 	# Takes chunks of 6, converts to decimal, and converts to base64 based on
-	# a lookup table
+	# a lookup string
 	for i in range(0, len(binary), 6):
 		dec = int(binary[i:i+6], base=2)
 		if dec <= 25:
-			result = result + lookup[dec]
+			result = result + LOOKUP[dec]
 		elif dec <= 51:
-			result = result + lookup[dec-26].lower()
+			result = result + LOOKUP[dec-26].lower()
 		elif dec <= 61:
 			result = result + str(dec - 52)
 		elif dec == 62:
